@@ -216,7 +216,7 @@ def post_tweet_from_row(row, index):
 try:
     for index, row in df.loc[df['Status'] == ''].iterrows():
         post_tweet_from_row(row, index)
-except
+except Exception as e:
     print("No empty cells were found in Status column")
 
 # Update Google Sheets with the new status
