@@ -213,7 +213,7 @@ def post_tweet_from_row(row, index):
 
 
 # Iterate through each row and post tweets (starting from tweet 1 onwards)
-for index, row in df.iterrows():
+for index, row in df.loc[df['Status'] == ''].iterrows():
     post_tweet_from_row(row, index)
 
 # Update Google Sheets with the new status
