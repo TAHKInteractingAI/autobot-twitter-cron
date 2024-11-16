@@ -1,8 +1,8 @@
 name: Run Autobot Twitter Script
 
 on:
-  schedule:
-    - cron: "0 3,8 * * *"
+  # schedule:
+  #   - cron: "0 3,8 * * *"
   push:
     branches: ["main"]
   pull_request:
