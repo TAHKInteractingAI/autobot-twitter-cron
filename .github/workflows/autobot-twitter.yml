@@ -3,10 +3,10 @@ name: Run Autobot Twitter Script
 on:
   schedule:
     - cron: "0 3,8 * * *"
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+  # push:
+  #   branches: ["main"]
+  # pull_request:
+  #   branches: ["main"]
 
 jobs:
   run-autobot-twitter:
