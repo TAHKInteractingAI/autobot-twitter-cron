@@ -30,7 +30,7 @@ credentials = service_account.Credentials.from_service_account_info({
 spreadsheet_service = build('sheets', 'v4', credentials=credentials)
 
 SPREADSHEET_ID = os.getenv('SPREADSHEET_ID')
-RANGE_NAME = 'input_tweet'
+RANGE_NAME = 'input_tweet!A:F'
 sheet = spreadsheet_service.spreadsheets()
 result = sheet.values().get(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME).execute()
 values = result.get('values', [])
@@ -211,13 +211,9 @@ def post_tweet_from_row(row, index):
         print(f"An error occurred while processing tweet {index + 1}: {e}")
         df.at[index, 'Status'] = 'Failed'
 
-
 # Iterate through each row and post tweets (starting from tweet 1 onwards)
-try:
-    for index, row in df.loc[df['Status'] == ''].iterrows():
-        post_tweet_from_row(row, index)
-except Exception as e:
-    print(f"An error occurred: {e}")
+for index, row in df.loc[df['Status'] == ''].iterrows():
+    post_tweet_from_row(row, index)
 
 # Update Google Sheets with the new status
 def update_google_sheet_status(df, spreadsheet_id, range_name):
