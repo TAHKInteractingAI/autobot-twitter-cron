@@ -110,12 +110,18 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-input_password = browser.find_element(By.XPATH, '//input[@autocomplete="current-password"]')
-input_password.send_keys("Henry@2023CA")
+try:
+    input_password = browser.find_element(By.XPATH, '//input[@autocomplete="current-password"]')
+    input_password.send_keys("Henry@2023CA")
+except Exception as e:
+    print(f"An error occurred: {e}")
 
-button_login = browser.find_element(By.XPATH, '//button[contains(.//span/text(), "Log in")]')
-button_login.click()
-time.sleep(10)
+try:
+    button_login = browser.find_element(By.XPATH, '//button[contains(.//span/text(), "Log in")]')
+    button_login.click()
+    time.sleep(10)
+except Exception as e:
+    print(f"An error occurred: {e}")
 
 """*Nếu được yêu cầu nhập mã code thì kiểm tra email lấy code và chạy cell dưới, ko thì bỏ qua 2 bước*"""
 # input_element = browser.find_element(By.XPATH, '//input[@data-testid="ocfEnterTextTextInput"]')
