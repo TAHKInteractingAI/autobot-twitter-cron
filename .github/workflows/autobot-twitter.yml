@@ -56,6 +56,11 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "updated files" --allow-empty)
 
+      - name: Fetch and merge changes from remote
+        run: |
+          git fetch origin main
+          git merge origin/main --allow-unrelated-histories || true
+          
       - name: Push changes
         uses: ad-m/github-push-action@v0.8.0
         with:
